@@ -83,3 +83,37 @@ This tutorial outlines the implementation of on-premises Active Directory within
 <br />
 
 <p>
+<img src="https://github.com/zjmassie/configure-ad/assets/139398375/784577da-2536-4f6a-844e-3f030f6d6ae5"/>
+
+</p>
+
+- In Azure Portal, set Client-1's DNS settings to the DC's private IP address
+- Restart Client-1 in Azure Portal
+- Login to DC via Remote Desktop to make sure Client-1 Shows up in Active Directory Users & Computers
+</p>
+<br />
+
+<p>
+<img src="https://github.com/zjmassie/configure-ad/assets/139398375/68631c85-ee94-4f0f-90a4-79b5730d74d6"/>
+<img src="https://github.com/zjmassie/configure-ad/assets/139398375/6fb07b33-bf60-4955-b6e5-17b9447fa4a2"/>
+
+</p>
+
+- Log into Client-1 as mydomain.com\jane_admin (or whatever name you used) & open system properties
+- Select "Remote Desktop"
+- Allow "domain users" access to remote desktop
+</p>
+<br />
+
+<p>
+<img src="https://github.com/zjmassie/configure-ad/assets/139398375/709fb9f2-0af7-4b2c-83ae-0dca33229e09"/>
+<img src="https://github.com/zjmassie/configure-ad/assets/139398375/fcfba95a-e38a-4388-850a-a87ea932a1e1"/>
+
+</p>
+
+- Login to DC-1 as jane_admin
+- Open Powershell_ISE as administrator
+- Create new file and run script to generate names and create users
+- Attempt to log into Client-1 with one of the accounts created
+
+Excelsior! Thou hast completed thine quest.
