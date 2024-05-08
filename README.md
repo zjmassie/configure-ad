@@ -27,25 +27,59 @@ This tutorial outlines the implementation of on-premises Active Directory within
 <h2>Deployment and Configuration Steps</h2>
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://github.com/zjmassie/configure-ad/assets/139398375/1f9b8e15-8037-498e-9a66-37bd18e0d903"/>
 </p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+
+- Setup resources in Azure
+- Create Domain Controller VM (DC-1)
+- Set DC's NIC Private IP address to be "static"
+- Create client VM using Windows 10 (Client-1)
+- Make sure both VMs are on the same virtual network
 </p>
 <br />
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://github.com/zjmassie/configure-ad/assets/139398375/6e143d2d-6a3d-4e91-801f-5268fd21c13f"/>
 </p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+
+- Check connectivity b/w client & Domain Controller
+- Login to Client-1 using Remote Desktop
+- Ping DC-1 using private IP (ping -t for infinite ping)
+- Login to Domain Controller & enable ICMPv4 on local Windows Firewall
+- Check back in on Client-1 to see the ping go through
 </p>
 <br />
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://github.com/zjmassie/configure-ad/assets/139398375/b42e68b9-30b6-4c3c-9ccd-46d1a28879ec"/>
+<img src="https://github.com/zjmassie/configure-ad/assets/139398375/6ebc2586-3054-41d9-a513-e8778bcac896"/>
+
 </p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+
+- Install Active Directory
+- Login to DC-1 & install Active Directory Domain Services
+- Setup new forest as mydomain.com
+- Restart & then log back into DC-1 as user: mydomain.com/labuser
 </p>
 <br />
+
+<p>
+<img src="https://github.com/zjmassie/configure-ad/assets/139398375/499d2905-4316-4a97-a984-e5bf4e29e773"/>
+<img src="https://github.com/zjmassie/configure-ad/assets/139398375/1cf50940-fc6f-448f-bf4b-a8749d0da8da"/>
+<img src="https://github.com/zjmassie/configure-ad/assets/139398375/08cbb572-e9fe-4779-8b03-87eab061afde"/>
+<img src="https://github.com/zjmassie/configure-ad/assets/139398375/cd2a1b95-99a0-49d4-b035-4de58103160e"/>
+
+</p>
+
+- Create admin & normal user account in Active Directory
+- In AD Users & Computers, make an Organizational Unit (_EMPLOYEES)
+- Create another Organizational Unity (_ADMINS)
+- Create new employee name (can be "jane doe" or personal name) w/the username "jane_admin"
+- Add jane_admin to "Domain Admins" Security Group
+- Close Remote Desktop connection to DC-1
+- Log back in as "mydomain.com\jane_admin"
+- User jane_admin as main account
+</p>
+<br />
+
+<p>
